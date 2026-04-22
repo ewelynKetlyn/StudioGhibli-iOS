@@ -33,13 +33,14 @@ struct HomeCard: View {
                 .fontWeight(.semibold)
                 .lineLimit(2)
                 .truncationMode(.tail)
+                .multilineTextAlignment(.leading)
                 .padding(.bottom)
                 .padding(.leading, 2)
 
             Spacer()
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .background()
+        .background(.cardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 10.0))
         .shadow(radius: 5.0)
     }

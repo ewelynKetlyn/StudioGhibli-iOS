@@ -25,7 +25,8 @@ struct AppTabView: View {
                     Label("Location", systemImage: "rectangle.stack")
                 }
         }
-        .tint(Color.blue)
+        .tint(.ghibliPrimary)
+        .background(Color.black)
     }
 }
 

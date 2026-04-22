@@ -21,6 +21,7 @@ struct HomeListView: View {
                 Text("Movies")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.ghibliPrimary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.movies) { movie in
@@ -41,8 +42,8 @@ struct HomeListView: View {
                     }
                 }
             }
-            .background()
             .padding(.horizontal, 8)
+            .background(Color.black)
             .onAppear {
                 if viewModel.movies.isEmpty {
                     Task {
