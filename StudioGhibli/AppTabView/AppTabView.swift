@@ -20,7 +20,7 @@ struct AppTabView: View {
                     Label("People", systemImage: "person")
                 }
             
-            LocationListView(viewModel: LocationsViewModel())
+            LocationListView(viewModel: LocationsListViewModel())
                 .tabItem {
                     Label("Location", systemImage: "rectangle.stack")
                 }

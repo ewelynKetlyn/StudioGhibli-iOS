@@ -34,16 +34,17 @@ struct LocationCardView: View {
             
             HStack {
                 Image(systemName: "cloud.fill")
-                Text("continental")
+                Text(viewModel.climate)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
-            .background(Color.blue)
+            .foregroundStyle(viewModel.cardTypeTextColor())
+            .background(viewModel.cardTaypeBackgroundColor())
             .clipShape(RoundedRectangle(cornerRadius: 4.0))
             
             HStack {
                 Image(systemName: "cloud.fill")
-                Text("Mountain")
+                Text(viewModel.terrain)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
@@ -53,8 +54,8 @@ struct LocationCardView: View {
     }
     
     private var informationsCard: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            infoRow(icon: "drop.fill", label: "Surface water:", value: "40%")
+        VStack(alignment: .leading) {
+            infoRow(icon: "drop.fill", label: "Surface water:", value: viewModel.water == "desconhecido" ? viewModel.water : "\(viewModel.water) %")
             infoRow(icon: "person.2.fill", label: "Residents:", value: "4")
             infoRow(icon: "film.fill", label: "Number of films:", value: "2")
         }

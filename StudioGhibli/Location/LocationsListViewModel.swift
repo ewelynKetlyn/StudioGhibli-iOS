@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 //lembrar de renomear para locationListViewModel !!!
-class LocationsViewModel: ObservableObject {
+class LocationsListViewModel: ObservableObject {
     @Published var locations: [LocationsModel] = []
     @Published var isLoading: Bool = false
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationListView: View {
-    @StateObject var viewModel: LocationsViewModel
+    @StateObject var viewModel: LocationsListViewModel
 
     var body: some View {
         Text("Location")
@@ -18,7 +18,7 @@ struct LocationListView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         ScrollView {
             ForEach(viewModel.locations) { locations in
-                LocationCardView(viewModel: LocationCardViewModel(title: locations.name))
+                LocationCardView(viewModel: LocationCardViewModel(title: locations.name, climate: locations.climate, terrain: locations.terrain, water: locations.surfaceWater))
             }
             .padding(4)
         }
