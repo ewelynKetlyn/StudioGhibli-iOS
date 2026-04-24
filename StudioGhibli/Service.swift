@@ -9,11 +9,14 @@ import Foundation
 
 enum Endpoint {
     case films
+    case locations
     
     var path: String {
         switch self {
         case .films:
             return "/films"
+        case .locations:
+            return "/locations"
         }
     }
 }
@@ -40,5 +43,22 @@ class Service {
         let movies = try JSONDecoder().decode([HomeMovieModel].self, from: data)
 
         return movies
+    }
+    
+    //Mark: Requisicao da lista de locations
+    func getLocations() async throws -> [LocationsModel] {
+        guard let url = URL(string: "\(baseURL)\(Endpoint.locations.path)") else {
+            throw URLError(.badURL)
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw URLError(.badServerResponse)
+        }
+        
+        let locations = try JSONDecoder().decode([LocationsModel].self, from: data)
+        return locations
     }
 }

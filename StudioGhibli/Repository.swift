@@ -9,6 +9,7 @@ import Foundation
 
 protocol RepositoryProtocol {
     func getMovies() async throws -> [HomeMovieModel]
+    func getLocations() async throws -> [LocationsModel]
 }
 
 class Repository: RepositoryProtocol {
@@ -20,5 +21,9 @@ class Repository: RepositoryProtocol {
     
     func getMovies() async throws -> [HomeMovieModel] {
         return try await service.getMovies()
+    }
+    
+    func getLocations() async throws -> [LocationsModel] {
+        return try await service.getLocations()
     }
 }
