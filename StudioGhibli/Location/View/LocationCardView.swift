@@ -12,7 +12,6 @@ struct LocationCardView: View {
 
     var body: some View {
         HStack {
-            //imageCardView
             nameCardView
             Spacer()
             Divider()
@@ -56,8 +55,8 @@ struct LocationCardView: View {
     private var informationsCard: some View {
         VStack(alignment: .leading) {
             infoRow(icon: "drop.fill", label: "Surface water:", value: viewModel.water == "desconhecido" ? viewModel.water : "\(viewModel.water) %")
-            infoRow(icon: "person.2.fill", label: "Residents:", value: "4")
-            infoRow(icon: "film.fill", label: "Number of films:", value: "2")
+            infoRow(icon: "person.2.fill", label: "Residents:", value: "\(viewModel.residents.count)")
+            infoRow(icon: "film.fill", label: "Number of films:", value: "\(viewModel.movies.count)")
         }
     }
     

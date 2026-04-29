@@ -26,12 +26,16 @@ class LocationCardViewModel: ObservableObject {
     public var climate: String
     public var terrain: String
     public var water: String
+    public var residents: [String]
+    public var movies: [String]
     @Published public var cardType: ClimateCardType
     
-    init(title: String, climate: String, terrain: String, water: String?) {
+    init(title: String, climate: String, terrain: String, water: String?, residents: [String], movies: [String]) {
         self.title = title
         self.climate = climate
         self.terrain = terrain
+        self.residents = residents
+        self.movies = movies
         if let water = water, !water.isEmpty {
             self.water = water
         } else {

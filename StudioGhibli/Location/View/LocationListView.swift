@@ -18,7 +18,7 @@ struct LocationListView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         ScrollView {
             ForEach(viewModel.locations) { locations in
-                LocationCardView(viewModel: LocationCardViewModel(title: locations.name, climate: locations.climate, terrain: locations.terrain, water: locations.surfaceWater))
+                LocationCardView(viewModel: LocationCardViewModel(title: locations.name, climate: locations.climate, terrain: locations.terrain, water: locations.surfaceWater, residents: locations.residents, movies: locations.films))
             }
             .padding(4)
         }
