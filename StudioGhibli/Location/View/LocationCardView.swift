@@ -18,6 +18,7 @@ struct LocationCardView: View {
                 .background(Color.white)
             informationsCard
         }
+        .padding(8)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.locationCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 4.0))
@@ -29,25 +30,26 @@ struct LocationCardView: View {
             Text(viewModel.title)
                 .font(.title)
                 .fontWeight(.semibold)
-                .foregroundStyle(Color.blue)
+                .foregroundStyle(.white)
             
             HStack {
-                Image(systemName: "cloud.fill")
-                Text(viewModel.climate)
+                Image(systemName: "\(viewModel.climateCardType.iconName)")
+                Text(viewModel.climateCardType.displayName)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
-            .foregroundStyle(viewModel.cardTypeTextColor())
-            .background(viewModel.cardTaypeBackgroundColor())
+            .foregroundStyle(viewModel.cardTypeClimateTextColor())
+            .background(viewModel.cardTypeClimateBackground())
             .clipShape(RoundedRectangle(cornerRadius: 4.0))
-            
+
             HStack {
-                Image(systemName: "cloud.fill")
-                Text(viewModel.terrain)
+                Image(systemName: "\(viewModel.terrainCardType.iconName)")
+                Text(viewModel.terrainCardType.displayName)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
-            .background(Color.green)
+            .foregroundStyle(viewModel.cardTypeTerrainTextColor())
+            .background(viewModel.cardTypeTerrainBackground())
             .clipShape(RoundedRectangle(cornerRadius: 4.0))
         }
     }
@@ -55,8 +57,11 @@ struct LocationCardView: View {
     private var informationsCard: some View {
         VStack(alignment: .leading) {
             infoRow(icon: "drop.fill", label: "Surface water:", value: viewModel.water == "desconhecido" ? viewModel.water : "\(viewModel.water) %")
+                .padding(.vertical, 4)
             infoRow(icon: "person.2.fill", label: "Residents:", value: "\(viewModel.residents.count)")
+                .padding(.vertical, 4)
             infoRow(icon: "film.fill", label: "Number of films:", value: "\(viewModel.movies.count)")
+                .padding(.vertical, 4)
         }
     }
     
